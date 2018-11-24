@@ -27,6 +27,7 @@ func minNumberInRotateArray(array []int) (min int) {
 	}
 	left := 0
 	right := len(array) - 1
+	// 一是升序
 	if array[left] <= array[right] {
 		return array[0]
 	}
