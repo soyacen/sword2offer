@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	. "github.com/yacen/sword2offer/util"
+)
 
 // 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
 // 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
@@ -10,11 +13,6 @@ import "fmt"
  2   3
 4    5 6
  7     8*/
-type TreeNode struct {
-	Data  interface{}
-	left  *TreeNode
-	right *TreeNode
-}
 
 func main() {
 	n1 := &TreeNode{Data: 1}
@@ -49,17 +47,17 @@ func printPreTree(root *TreeNode) {
 		return
 	}
 	fmt.Println(root.Data)
-	printPreTree(root.left)
-	printPreTree(root.right)
+	printPreTree(root.Left)
+	printPreTree(root.Right)
 }
 
 func printInTree(root *TreeNode) {
 	if root == nil {
 		return
 	}
-	printInTree(root.left)
+	printInTree(root.Left)
 	fmt.Println(root.Data)
-	printInTree(root.right)
+	printInTree(root.Right)
 }
 
 func reConstructBinaryTree(pre []*TreeNode, in []*TreeNode) (root *TreeNode) {
@@ -99,7 +97,7 @@ func reConstructBinaryTree(pre []*TreeNode, in []*TreeNode) (root *TreeNode) {
 		}
 	}
 
-	root.left = reConstructBinaryTree(leftPreTreeNodes, leftInTreeNodes)
-	root.right = reConstructBinaryTree(rightPreTreeNodes, rightInTreeNodes)
+	root.Left = reConstructBinaryTree(leftPreTreeNodes, leftInTreeNodes)
+	root.Right = reConstructBinaryTree(rightPreTreeNodes, rightInTreeNodes)
 	return
 }
