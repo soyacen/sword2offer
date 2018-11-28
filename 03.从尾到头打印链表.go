@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	. "github.com/yacen/sword2offer/util"
 )
 
@@ -10,10 +9,4 @@ import (
 func main() {
 	head := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, &ListNode{5, nil}}}}}
 	PrintListFromTailToHead(head)
-}
-
-func PrintListFromTailToHead(listNode *ListNode) {
-	for current := listNode; current != nil; current = current.Next {
-		fmt.Println(current.Data)
-	}
 }
