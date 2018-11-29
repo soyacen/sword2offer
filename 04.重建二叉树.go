@@ -27,10 +27,10 @@ func main() {
 	pre := []*TreeNode{n1, n2, n4, n7, n3, n5, n6, n8}
 	in := []*TreeNode{n4, n7, n2, n1, n5, n3, n8, n6}
 	root := reConstructBinaryTree(pre, in)
-	printPreTree(root)
+	PrintPreTree(root)
 	fmt.Println("==================")
-	printInTree(root)
-	//printInTree(root)
+	PrintInTree(root)
+	//PrintInTree(root)
 	/*	n1.left = n2
 		n1.right=n3
 		n2.left=n4
@@ -38,26 +38,8 @@ func main() {
 		n3.right=n6
 		n4.right=n7
 		n6.left=n8*/
-	//printPreTree(n1)
-	//printInTree(n1)
-}
-
-func printPreTree(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	fmt.Println(root.Data)
-	printPreTree(root.Left)
-	printPreTree(root.Right)
-}
-
-func printInTree(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	printInTree(root.Left)
-	fmt.Println(root.Data)
-	printInTree(root.Right)
+	//PrintPreTree(n1)
+	//PrintInTree(n1)
 }
 
 func reConstructBinaryTree(pre []*TreeNode, in []*TreeNode) (root *TreeNode) {

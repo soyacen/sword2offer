@@ -1,6 +1,9 @@
 package util
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type ListNode struct {
 	Data interface{}
@@ -18,4 +21,45 @@ func PrintListFromTailToHead(listNode *ListNode) {
 		fmt.Print(current.Data, ", ")
 	}
 	fmt.Println("")
+}
+
+func PrintPreTree(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	fmt.Println(root.Data)
+	PrintPreTree(root.Left)
+	PrintPreTree(root.Right)
+}
+
+func PrintInTree(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	PrintInTree(root.Left)
+	fmt.Println(root.Data)
+	PrintInTree(root.Right)
+}
+
+// ================================ stack =======================================================
+type Stack struct {
+	Data []interface{}
+	Lock sync.RWMutex
+}
+
+func (s *Stack) Pop() (result interface{}) {
+	if len(s.Data) == 0 {
+		return
+	}
+	s.Lock.RLock()
+	result = s.Data[len(s.Data)-1]
+	s.Data = s.Data[:len(s.Data)-1]
+	s.Lock.RUnlock()
+	return
+}
+
+func (s *Stack) Push(item interface{}) {
+	s.Lock.Lock()
+	s.Data = append(s.Data, item)
+	s.Lock.Unlock()
 }
