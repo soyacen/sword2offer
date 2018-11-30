@@ -41,6 +41,15 @@ func PrintInTree(root *TreeNode) {
 	PrintInTree(root.Right)
 }
 
+func PrintPostTree(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	PrintPostTree(root.Left)
+	PrintPostTree(root.Right)
+	fmt.Print(root.Data, ", ")
+}
+
 // ================================ stack =======================================================
 type Stack struct {
 	Data []interface{}
