@@ -44,7 +44,7 @@ func PrintInTree(root *TreeNode) {
 // ================================ stack =======================================================
 type Stack struct {
 	Data []interface{}
-	Lock sync.RWMutex
+	Lock *sync.RWMutex
 }
 
 func (s *Stack) Pop() (result interface{}) {
@@ -59,7 +59,22 @@ func (s *Stack) Pop() (result interface{}) {
 }
 
 func (s *Stack) Push(item interface{}) {
+	if s.Lock == nil {
+		s.Lock = &sync.RWMutex{}
+	}
 	s.Lock.Lock()
 	s.Data = append(s.Data, item)
 	s.Lock.Unlock()
+}
+
+func (s *Stack) Top() (result interface{}) {
+	if len(s.Data) == 0 {
+		return
+	}
+	result = s.Data[len(s.Data)-1]
+	return
+}
+
+func (s *Stack) IsEmpty() bool {
+	return len(s.Data) == 0
 }

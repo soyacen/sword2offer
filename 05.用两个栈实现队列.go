@@ -40,8 +40,8 @@ func (q *Queue) Dequeue() (result interface{}) {
 }
 
 func main() {
-	s1 := &Stack{Lock: sync.RWMutex{}}
-	s2 := &Stack{Lock: sync.RWMutex{}}
+	s1 := &Stack{Lock: &sync.RWMutex{}}
+	s2 := &Stack{Lock: &sync.RWMutex{}}
 	q := &Queue{s1, s2}
 
 	q.Enqueue(1)

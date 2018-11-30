@@ -40,7 +40,7 @@ func Mirror(pRoot *TreeNode) (result *TreeNode) {
 }
 
 func Mirror2(pRoot *TreeNode) (result *TreeNode) {
-	stack := &Stack{Lock: sync.RWMutex{}}
+	stack := &Stack{Lock: &sync.RWMutex{}}
 	stack.Push(pRoot)
 	for {
 		node := stack.Pop()
