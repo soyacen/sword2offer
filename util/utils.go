@@ -78,3 +78,40 @@ func (s *Stack) Top() (result interface{}) {
 func (s *Stack) IsEmpty() bool {
 	return len(s.Data) == 0
 }
+
+// ============================ queue ===================================
+
+type Queue struct {
+	Stack1 *Stack
+	Stack2 *Stack
+}
+
+func (q *Queue) Enqueue(item interface{}) {
+	var tmp interface{}
+	for {
+		tmp = q.Stack1.Pop()
+		if tmp == nil {
+			break
+		}
+		q.Stack2.Push(tmp)
+	}
+	q.Stack1.Push(item)
+
+	for {
+		tmp = q.Stack2.Pop()
+		if tmp == nil {
+			break
+		}
+		q.Stack1.Push(tmp)
+	}
+
+}
+
+func (q *Queue) Dequeue() (result interface{}) {
+	result = q.Stack1.Pop()
+	return
+}
+
+func (s *Queue) IsEmpty() bool {
+	return s.Stack1.IsEmpty()
+}

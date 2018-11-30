@@ -8,37 +8,6 @@ import (
 
 //用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
 
-type Queue struct {
-	Stack1 *Stack
-	Stack2 *Stack
-}
-
-func (q *Queue) Enqueue(n int) {
-	var tmp interface{}
-	for {
-		tmp = q.Stack1.Pop()
-		if tmp == nil {
-			break
-		}
-		q.Stack2.Push(tmp)
-	}
-	q.Stack1.Push(n)
-
-	for {
-		tmp = q.Stack2.Pop()
-		if tmp == nil {
-			break
-		}
-		q.Stack1.Push(tmp)
-	}
-
-}
-
-func (q *Queue) Dequeue() (result interface{}) {
-	result = q.Stack1.Pop()
-	return
-}
-
 func main() {
 	s1 := &Stack{Lock: &sync.RWMutex{}}
 	s2 := &Stack{Lock: &sync.RWMutex{}}
