@@ -186,8 +186,6 @@ func IsIn(pHead *RandomListNode, data int) (bool, *RandomListNode) {
 }
 
 /*
-方法3：
-
 在不使用辅助空间的情况下实现O(N)的时间效率。
 
 第一步：根据原始链表的每个结点N创建对应的N'，然后将N‘通过pNext接到N的后面；
