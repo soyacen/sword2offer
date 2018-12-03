@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 /**
 题目描述
@@ -10,10 +13,35 @@ import "fmt"
 */
 func main() {
 	array := []int{1, 2, 3, 2, 2, 2, 5, 4, 2}
-	fmt.Println(MoreThanHalfNum_Solution(array))
+	t1 := time.Now().UnixNano()
+	fmt.Println(MoreThanHalfNum_Solution1(array), time.Now().UnixNano()-t1)
+
+	t2 := time.Now().UnixNano()
+	fmt.Println(MoreThanHalfNum_Solution2(array), time.Now().UnixNano()-t2)
+
 }
 
-func MoreThanHalfNum_Solution(numbers []int) int {
+func MoreThanHalfNum_Solution1(numbers []int) int {
+	pre, count := 0, 0
+	for _, num := range numbers {
+		if num == pre {
+			count++
+		} else {
+			if count > 0 {
+				count--
+			} else {
+				pre = num
+				count++
+			}
+		}
+	}
+	if count > 0 {
+		return pre
+	}
+	return 0
+}
+
+func MoreThanHalfNum_Solution2(numbers []int) int {
 	m := make(map[int]int)
 	for _, num := range numbers {
 		_, ok := m[num]
