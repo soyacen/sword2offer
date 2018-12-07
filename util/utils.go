@@ -56,9 +56,16 @@ type Stack struct {
 	Lock *sync.RWMutex
 }
 
+func NewStack() *Stack {
+	return &Stack{Lock: &sync.RWMutex{}}
+}
+
 func (s *Stack) Pop() (result interface{}) {
 	if len(s.Data) == 0 {
 		return
+	}
+	if s.Lock == nil {
+		s.Lock = &sync.RWMutex{}
 	}
 	s.Lock.RLock()
 	result = s.Data[len(s.Data)-1]
