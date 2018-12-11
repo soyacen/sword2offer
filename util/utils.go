@@ -75,6 +75,9 @@ func (s *Stack) Pop() (result interface{}) {
 }
 
 func (s *Stack) Push(item interface{}) {
+	if item == nil {
+		return
+	}
 	if s.Lock == nil {
 		s.Lock = &sync.RWMutex{}
 	}
@@ -89,6 +92,10 @@ func (s *Stack) Top() (result interface{}) {
 	}
 	result = s.Data[len(s.Data)-1]
 	return
+}
+
+func (s *Stack) Length() int {
+	return len(s.Data)
 }
 
 func (s *Stack) IsEmpty() bool {
