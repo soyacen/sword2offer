@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 )
 
@@ -31,6 +32,8 @@ func main() {
 	fmt.Println(StrToInt("12345123451234512345123451234512345123451234512345"))
 	fmt.Println(StrToInt("1234a5"))
 	fmt.Println(StrToInt(""))
+
+	fmt.Println(strconv.Atoi("12345"))
 }
 
 func StrToInt(str string) (result int) {
