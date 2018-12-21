@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	. "github.com/yacen/sword2offer/util"
-	"sync"
 )
 
 // 从上往下打印出二叉树的每个节点，同层节点从左至右打印。
@@ -30,9 +29,7 @@ func main() {
 }
 
 func PrintFromTopToBottom(root *TreeNode) {
-	s1 := &Stack{Lock: &sync.RWMutex{}}
-	s2 := &Stack{Lock: &sync.RWMutex{}}
-	queue := &Queue{s1, s2}
+	queue := NewQueue()
 	queue.Enqueue(root)
 	for !queue.IsEmpty() {
 		node := queue.Dequeue()

@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	. "github.com/yacen/sword2offer/util"
-	"sync"
 )
 
 func main() {
@@ -40,7 +39,7 @@ func Mirror(pRoot *TreeNode) (result *TreeNode) {
 }
 
 func Mirror2(pRoot *TreeNode) (result *TreeNode) {
-	stack := &Stack{Lock: &sync.RWMutex{}}
+	stack := NewStack()
 	stack.Push(pRoot)
 	for {
 		node := stack.Pop()
