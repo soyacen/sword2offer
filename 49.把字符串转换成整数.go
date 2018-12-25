@@ -31,9 +31,9 @@ func main() {
 	fmt.Println(StrToInt("-12345"))
 	fmt.Println(StrToInt("12345123451234512345123451234512345123451234512345"))
 	fmt.Println(StrToInt("1234a5"))
-	fmt.Println(StrToInt(""))
+	fmt.Println(StrToInt("12345.542"))
 
-	fmt.Println(strconv.Atoi("12345"))
+	fmt.Println(strconv.Atoi("12345.808"))
 }
 
 func StrToInt(str string) (result int) {
