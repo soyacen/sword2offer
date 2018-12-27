@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
+	. "github.com/yacen/sword2offer/tree"
 	. "github.com/yacen/sword2offer/util"
 )
 
 func main() {
-	n1 := &TreeNode{Data: 1}
-	n2 := &TreeNode{Data: 2}
-	n3 := &TreeNode{Data: 3}
-	n4 := &TreeNode{Data: 4}
-	n5 := &TreeNode{Data: 5}
-	n6 := &TreeNode{Data: 6}
-	n7 := &TreeNode{Data: 7}
-	n8 := &TreeNode{Data: 8}
+	n1 := &Node{Data: 1}
+	n2 := &Node{Data: 2}
+	n3 := &Node{Data: 3}
+	n4 := &Node{Data: 4}
+	n5 := &Node{Data: 5}
+	n6 := &Node{Data: 6}
+	n7 := &Node{Data: 7}
+	n8 := &Node{Data: 8}
 
 	n1.Left = n2
 	n1.Right = n3
@@ -28,7 +29,7 @@ func main() {
 	PrintInTree(Mirror2(n1))
 }
 
-func Mirror(pRoot *TreeNode) (result *TreeNode) {
+func Mirror(pRoot *Node) (result *Node) {
 	if pRoot == nil {
 		return nil
 	}
@@ -38,7 +39,7 @@ func Mirror(pRoot *TreeNode) (result *TreeNode) {
 	return pRoot
 }
 
-func Mirror2(pRoot *TreeNode) (result *TreeNode) {
+func Mirror2(pRoot *Node) (result *Node) {
 	stack := NewStack()
 	stack.Push(pRoot)
 	for {
@@ -46,7 +47,7 @@ func Mirror2(pRoot *TreeNode) (result *TreeNode) {
 		if node == nil {
 			break
 		}
-		n, _ := node.(*TreeNode)
+		n, _ := node.(*Node)
 		n.Left, n.Right = n.Right, n.Left
 		if n.Left != nil {
 			stack.Push(n.Left)

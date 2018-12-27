@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 // 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。
@@ -17,14 +17,14 @@ import (
 */
 
 func main() {
-	n1 := &TreeNode{Data: 1}
-	n2 := &TreeNode{Data: 2}
-	n3 := &TreeNode{Data: 3}
-	n4 := &TreeNode{Data: 4}
-	n15 := &TreeNode{Data: 15}
-	n6 := &TreeNode{Data: 6}
-	n7 := &TreeNode{Data: 7}
-	n8 := &TreeNode{Data: 8}
+	n1 := &Node{Data: 1}
+	n2 := &Node{Data: 2}
+	n3 := &Node{Data: 3}
+	n4 := &Node{Data: 4}
+	n15 := &Node{Data: 15}
+	n6 := &Node{Data: 6}
+	n7 := &Node{Data: 7}
+	n8 := &Node{Data: 8}
 
 	n1.Left = n2
 	n1.Right = n3
@@ -38,7 +38,7 @@ func main() {
 
 }
 
-func FindPath(root *TreeNode, expectNumber int) (result [][]int) {
+func FindPath(root *Node, expectNumber int) (result [][]int) {
 	paths := Pre(root, 1)
 	fmt.Println(paths)
 	for _, path := range paths {
@@ -54,7 +54,7 @@ func FindPath(root *TreeNode, expectNumber int) (result [][]int) {
 	return
 }
 
-func Pre(root *TreeNode, index int) (path [][]int) {
+func Pre(root *Node, index int) (path [][]int) {
 	if root == nil {
 		return
 	}

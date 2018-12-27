@@ -1,18 +1,10 @@
 package util
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type ListNode struct {
 	Data interface{}
 	Next *ListNode
-}
-
-type TreeNode struct {
-	Data  interface{}
-	Left  *TreeNode
-	Right *TreeNode
 }
 
 func PrintListFromTailToHead(listNode *ListNode) {
@@ -20,33 +12,6 @@ func PrintListFromTailToHead(listNode *ListNode) {
 		fmt.Print(current.Data, ", ")
 	}
 	fmt.Println("")
-}
-
-func PrintPreTree(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	fmt.Println(root.Data)
-	PrintPreTree(root.Left)
-	PrintPreTree(root.Right)
-}
-
-func PrintInTree(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	PrintInTree(root.Left)
-	fmt.Println(root.Data)
-	PrintInTree(root.Right)
-}
-
-func PrintPostTree(root *TreeNode) {
-	if root == nil {
-		return
-	}
-	PrintPostTree(root.Left)
-	PrintPostTree(root.Right)
-	fmt.Print(root.Data, ", ")
 }
 
 // ================================ stack =======================================================

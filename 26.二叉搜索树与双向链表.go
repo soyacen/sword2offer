@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 // 输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。
@@ -16,7 +16,7 @@ import (
 */
 
 func main() {
-	n4 := &TreeNode{Data: 4, Left: &TreeNode{Data: 2, Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}}, Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}}, Right: &TreeNode{Data: 8}}}
+	n4 := &Node{Data: 4, Left: &Node{Data: 2, Left: &Node{Data: 1}, Right: &Node{Data: 3}}, Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}}, Right: &Node{Data: 8}}}
 	list := Convert(n4)
 	for node := list; node != nil; node = node.Right {
 		fmt.Println(node.Data)
@@ -28,7 +28,7 @@ func main() {
 	}
 }
 
-func Convert(pRootOfTree *TreeNode) (result *TreeNode) {
+func Convert(pRootOfTree *Node) (result *Node) {
 	if pRootOfTree == nil {
 		return
 	}

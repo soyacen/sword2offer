@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 // 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
@@ -17,17 +17,17 @@ import (
 */
 
 func main() {
-	n1 := &TreeNode{Data: 1}
-	n2 := &TreeNode{Data: 2}
-	n3 := &TreeNode{Data: 3}
-	n4 := &TreeNode{Data: 4}
-	n5 := &TreeNode{Data: 5}
-	n6 := &TreeNode{Data: 6}
-	n7 := &TreeNode{Data: 7}
-	n8 := &TreeNode{Data: 8}
+	n1 := &Node{Data: 1}
+	n2 := &Node{Data: 2}
+	n3 := &Node{Data: 3}
+	n4 := &Node{Data: 4}
+	n5 := &Node{Data: 5}
+	n6 := &Node{Data: 6}
+	n7 := &Node{Data: 7}
+	n8 := &Node{Data: 8}
 
-	pre := []*TreeNode{n1, n2, n4, n7, n3, n5, n6, n8}
-	in := []*TreeNode{n4, n7, n2, n1, n5, n3, n8, n6}
+	pre := []*Node{n1, n2, n4, n7, n3, n5, n6, n8}
+	in := []*Node{n4, n7, n2, n1, n5, n3, n8, n6}
 	root := reConstructBinaryTree(pre, in)
 	PrintPreTree(root)
 	fmt.Println("==================")
@@ -44,44 +44,44 @@ func main() {
 	//PrintInTree(n1)
 }
 
-func reConstructBinaryTree(pre []*TreeNode, in []*TreeNode) (root *TreeNode) {
+func reConstructBinaryTree(pre []*Node, in []*Node) (root *Node) {
 	if len(pre) == 0 || len(in) == 0 {
 		return nil
 	}
 	root = pre[0]
 	rootInIndex := -1
-	var leftPreTreeNodes []*TreeNode
-	var leftInTreeNodes []*TreeNode
-	var rightPreTreeNodes []*TreeNode
-	var rightInTreeNodes []*TreeNode
+	var leftPreNodes []*Node
+	var leftInNodes []*Node
+	var rightPreNodes []*Node
+	var rightInNodes []*Node
 	for i, node := range in {
 		if node == root {
 			rootInIndex = i
 		} else {
 			if rootInIndex == -1 {
-				leftInTreeNodes = append(leftInTreeNodes, node)
+				leftInNodes = append(leftInNodes, node)
 			} else {
-				rightInTreeNodes = append(rightInTreeNodes, node)
+				rightInNodes = append(rightInNodes, node)
 			}
 		}
 	}
 
 	for _, preNode := range pre[1:] {
 		isLeft := false
-		for _, inNode := range leftInTreeNodes {
+		for _, inNode := range leftInNodes {
 			if preNode == inNode {
 				isLeft = true
 				break
 			}
 		}
 		if isLeft {
-			leftPreTreeNodes = append(leftPreTreeNodes, preNode)
+			leftPreNodes = append(leftPreNodes, preNode)
 		} else {
-			rightPreTreeNodes = append(rightPreTreeNodes, preNode)
+			rightPreNodes = append(rightPreNodes, preNode)
 		}
 	}
 
-	root.Left = reConstructBinaryTree(leftPreTreeNodes, leftInTreeNodes)
-	root.Right = reConstructBinaryTree(rightPreTreeNodes, rightInTreeNodes)
+	root.Left = reConstructBinaryTree(leftPreNodes, leftInNodes)
+	root.Right = reConstructBinaryTree(rightPreNodes, rightInNodes)
 	return
 }

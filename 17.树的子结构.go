@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 // 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
@@ -20,14 +20,14 @@ import (
 */
 
 func main() {
-	n1 := &TreeNode{Data: 1}
-	n2 := &TreeNode{Data: 2}
-	n3 := &TreeNode{Data: 3}
-	n4 := &TreeNode{Data: 4}
-	n5 := &TreeNode{Data: 5}
-	n6 := &TreeNode{Data: 6}
-	n7 := &TreeNode{Data: 7}
-	n8 := &TreeNode{Data: 8}
+	n1 := &Node{Data: 1}
+	n2 := &Node{Data: 2}
+	n3 := &Node{Data: 3}
+	n4 := &Node{Data: 4}
+	n5 := &Node{Data: 5}
+	n6 := &Node{Data: 6}
+	n7 := &Node{Data: 7}
+	n8 := &Node{Data: 8}
 
 	n1.Left = n2
 	n1.Right = n3
@@ -39,16 +39,16 @@ func main() {
 
 	fmt.Println(HasSubtree(n1, n8))
 
-	n61 := &TreeNode{Data: 6}
-	n71 := &TreeNode{Data: 7}
-	n81 := &TreeNode{Data: 8}
+	n61 := &Node{Data: 6}
+	n71 := &Node{Data: 7}
+	n81 := &Node{Data: 8}
 	n81.Left = n71
 	n81.Right = n61
 	fmt.Println(HasSubtree(n1, n81))
 
 }
 
-func HasSubtree(pRoot1 *TreeNode, pRoot2 *TreeNode) bool {
+func HasSubtree(pRoot1 *Node, pRoot2 *Node) bool {
 	if pRoot1 == nil || pRoot2 == nil {
 		return false
 	}
@@ -65,7 +65,7 @@ func HasSubtree(pRoot1 *TreeNode, pRoot2 *TreeNode) bool {
 	}
 }
 
-func CheckTree(pRoot1 *TreeNode, pRoot2 *TreeNode) bool {
+func CheckTree(pRoot1 *Node, pRoot2 *Node) bool {
 	if pRoot2 == nil {
 		return true
 	}

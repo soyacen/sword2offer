@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 /**
@@ -20,33 +20,33 @@ import (
 */
 
 func main() {
-	n4 := &TreeNode{Data: 4,
-		Left: &TreeNode{Data: 2,
-			Left: &TreeNode{Data: 1, Right: &TreeNode{Data: 4,
-				Left: &TreeNode{Data: 2,
-					Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-				Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-					Right: &TreeNode{Data: 8}}}}, Right: &TreeNode{Data: 3}},
-		Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-			Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4,
-				Left: &TreeNode{Data: 2,
-					Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-				Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-					Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4,
-						Left: &TreeNode{Data: 2,
-							Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-						Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5, Left: &TreeNode{Data: 4,
-							Left: &TreeNode{Data: 2,
-								Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-							Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-								Right: &TreeNode{Data: 8}}}}},
-							Right: &TreeNode{Data: 8}}}}}}}}}
+	n4 := &Node{Data: 4,
+		Left: &Node{Data: 2,
+			Left: &Node{Data: 1, Right: &Node{Data: 4,
+				Left: &Node{Data: 2,
+					Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+				Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+					Right: &Node{Data: 8}}}}, Right: &Node{Data: 3}},
+		Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+			Right: &Node{Data: 8, Left: &Node{Data: 4,
+				Left: &Node{Data: 2,
+					Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+				Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+					Right: &Node{Data: 8, Left: &Node{Data: 4,
+						Left: &Node{Data: 2,
+							Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+						Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5, Left: &Node{Data: 4,
+							Left: &Node{Data: 2,
+								Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+							Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+								Right: &Node{Data: 8}}}}},
+							Right: &Node{Data: 8}}}}}}}}}
 	fmt.Println(TreeDepth(n4))
 	fmt.Println(TreeDepth2(n4))
 }
 
 // 递归
-func TreeDepth(pRoot *TreeNode) (result int) {
+func TreeDepth(pRoot *Node) (result int) {
 	result = 0
 	if pRoot == nil {
 		return
@@ -63,14 +63,14 @@ func TreeDepth(pRoot *TreeNode) (result int) {
 }
 
 // 循环遍历
-func TreeDepth2(pRoot *TreeNode) (result int) {
+func TreeDepth2(pRoot *Node) (result int) {
 	if pRoot == nil {
 		return
 	}
-	stack := []*TreeNode{pRoot}
+	stack := []*Node{pRoot}
 	for len(stack) > 0 {
 		result++
-		tmp := []*TreeNode{}
+		tmp := []*Node{}
 		for _, v := range stack {
 			if v.Left != nil {
 				tmp = append(tmp, v.Left)

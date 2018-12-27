@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/tree"
 )
 
 /**
@@ -20,35 +20,35 @@ AVL树（有别于AVL算法），且具有以下性质：
 1是根节点，F(n-1)是左子树的节点数量，F(n-2)是右子树的节点数量。
 */
 func main() {
-	n4 := &TreeNode{Data: 4, Left: &TreeNode{Data: 2, Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}}, Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}}, Right: &TreeNode{Data: 8}}}
+	n4 := &Node{Data: 4, Left: &Node{Data: 2, Left: &Node{Data: 1}, Right: &Node{Data: 3}}, Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}}, Right: &Node{Data: 8}}}
 	fmt.Println(IsBalanced_Solution(n4))
 
-	n41 := &TreeNode{Data: 4,
-		Left: &TreeNode{Data: 2,
-			Left: &TreeNode{Data: 1, Right: &TreeNode{Data: 4,
-				Left: &TreeNode{Data: 2,
-					Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-				Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-					Right: &TreeNode{Data: 8}}}}, Right: &TreeNode{Data: 3}},
-		Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-			Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4,
-				Left: &TreeNode{Data: 2,
-					Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-				Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-					Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4,
-						Left: &TreeNode{Data: 2,
-							Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-						Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5, Left: &TreeNode{Data: 4,
-							Left: &TreeNode{Data: 2,
-								Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}},
-							Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}},
-								Right: &TreeNode{Data: 8}}}}},
-							Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4, Left: &TreeNode{Data: 2, Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}}, Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}}, Right: &TreeNode{Data: 8, Left: &TreeNode{Data: 4, Left: &TreeNode{Data: 2, Left: &TreeNode{Data: 1}, Right: &TreeNode{Data: 3}}, Right: &TreeNode{Data: 7, Left: &TreeNode{Data: 6, Left: &TreeNode{Data: 5}}, Right: &TreeNode{Data: 8}}}}}}}}}}}}}}}
+	n41 := &Node{Data: 4,
+		Left: &Node{Data: 2,
+			Left: &Node{Data: 1, Right: &Node{Data: 4,
+				Left: &Node{Data: 2,
+					Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+				Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+					Right: &Node{Data: 8}}}}, Right: &Node{Data: 3}},
+		Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+			Right: &Node{Data: 8, Left: &Node{Data: 4,
+				Left: &Node{Data: 2,
+					Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+				Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+					Right: &Node{Data: 8, Left: &Node{Data: 4,
+						Left: &Node{Data: 2,
+							Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+						Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5, Left: &Node{Data: 4,
+							Left: &Node{Data: 2,
+								Left: &Node{Data: 1}, Right: &Node{Data: 3}},
+							Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}},
+								Right: &Node{Data: 8}}}}},
+							Right: &Node{Data: 8, Left: &Node{Data: 4, Left: &Node{Data: 2, Left: &Node{Data: 1}, Right: &Node{Data: 3}}, Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}}, Right: &Node{Data: 8, Left: &Node{Data: 4, Left: &Node{Data: 2, Left: &Node{Data: 1}, Right: &Node{Data: 3}}, Right: &Node{Data: 7, Left: &Node{Data: 6, Left: &Node{Data: 5}}, Right: &Node{Data: 8}}}}}}}}}}}}}}}
 
 	fmt.Println(IsBalanced_Solution(n41))
 }
 
-func IsBalanced_Solution(pRoot *TreeNode) (result bool) {
+func IsBalanced_Solution(pRoot *Node) (result bool) {
 	if pRoot == nil {
 		return true
 	}
@@ -60,14 +60,14 @@ func IsBalanced_Solution(pRoot *TreeNode) (result bool) {
 }
 
 // 使用38题代码
-func TreeDepth3(pRoot *TreeNode) (result int) {
+func TreeDepth3(pRoot *Node) (result int) {
 	if pRoot == nil {
 		return
 	}
-	stack := []*TreeNode{pRoot}
+	stack := []*Node{pRoot}
 	for len(stack) > 0 {
 		result++
-		tmp := []*TreeNode{}
+		tmp := []*Node{}
 		for _, v := range stack {
 			if v.Left != nil {
 				tmp = append(tmp, v.Left)
