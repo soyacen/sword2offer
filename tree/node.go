@@ -25,7 +25,7 @@ func PreTree(root *Node, f func(node *Node)) {
 
 func PrintInTree(root *Node) {
 	InTree(root, func(node *Node) {
-		fmt.Println(node)
+		fmt.Println(node.Data)
 	})
 }
 
@@ -38,9 +38,18 @@ func InTree(root *Node, f func(node *Node)) {
 	PrintPostTree(root.Right)
 }
 
+func SymmetricalInTree(root *Node, f func(node *Node)) {
+	if root == nil {
+		return
+	}
+	PrintPostTree(root.Right)
+	f(root)
+	PrintPostTree(root.Left)
+}
+
 func PrintPostTree(root *Node) {
 	PostTree(root, func(node *Node) {
-		fmt.Print(node.Data, ", ")
+		fmt.Println(node.Data)
 	})
 }
 
