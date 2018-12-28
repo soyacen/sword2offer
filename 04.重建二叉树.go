@@ -28,7 +28,7 @@ func main() {
 
 	pre := []*Node{n1, n2, n4, n7, n3, n5, n6, n8}
 	in := []*Node{n4, n7, n2, n1, n5, n3, n8, n6}
-	root := reConstructBinaryTree(pre, in)
+	root := ReConstructBinaryTree(pre, in)
 	PrintPreTree(root)
 	fmt.Println("==================")
 	PrintInTree(root)
@@ -42,46 +42,21 @@ func main() {
 		n6.left=n8*/
 	//PrintPreTree(n1)
 	//PrintInTree(n1)
-}
 
-func reConstructBinaryTree(pre []*Node, in []*Node) (root *Node) {
-	if len(pre) == 0 || len(in) == 0 {
-		return nil
-	}
-	root = pre[0]
-	rootInIndex := -1
-	var leftPreNodes []*Node
-	var leftInNodes []*Node
-	var rightPreNodes []*Node
-	var rightInNodes []*Node
-	for i, node := range in {
-		if node == root {
-			rootInIndex = i
-		} else {
-			if rootInIndex == -1 {
-				leftInNodes = append(leftInNodes, node)
-			} else {
-				rightInNodes = append(rightInNodes, node)
-			}
-		}
-	}
+	fmt.Println("==================")
 
-	for _, preNode := range pre[1:] {
-		isLeft := false
-		for _, inNode := range leftInNodes {
-			if preNode == inNode {
-				isLeft = true
-				break
-			}
-		}
-		if isLeft {
-			leftPreNodes = append(leftPreNodes, preNode)
-		} else {
-			rightPreNodes = append(rightPreNodes, preNode)
-		}
-	}
+	n1 = &Node{Data: 1}
+	n2 = &Node{Data: 2}
+	n22 := &Node{Data: 22}
+	n3 = &Node{Data: 3}
+	n33 := &Node{Data: 33}
+	n4 = &Node{Data: 4}
+	n44 := &Node{Data: 44}
+	n5 = &Node{Data: 5}
+	n55 := &Node{Data: 55}
 
-	root.Left = reConstructBinaryTree(leftPreNodes, leftInNodes)
-	root.Right = reConstructBinaryTree(rightPreNodes, rightInNodes)
-	return
+	root = ReConstructBinaryTree([]*Node{n1, n2, n3, n5, n4, n22, n44, n33, n55}, []*Node{n5, n3, n2, n4, n1, n44, n22, n33, n55})
+	PrintPreTree(root)
+	fmt.Println("==================")
+	PrintInTree(root)
 }
