@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/list"
 )
 
 /**
@@ -12,7 +12,7 @@ import (
 处理后为 1->2->5
 */
 func main() {
-	list := &ListNode{Data: 1, Next: &ListNode{Data: 2, Next: &ListNode{Data: 3, Next: &ListNode{Data: 3, Next: &ListNode{Data: 4, Next: &ListNode{Data: 4, Next: &ListNode{Data: 5}}}}}}}
+	list := &Node{Data: 1, Next: &Node{Data: 2, Next: &Node{Data: 3, Next: &Node{Data: 3, Next: &Node{Data: 4, Next: &Node{Data: 4, Next: &Node{Data: 5}}}}}}}
 
 	n1 := deleteDuplication1(list)
 
@@ -20,7 +20,7 @@ func main() {
 		fmt.Println(n.Data)
 	}
 	fmt.Println("===============================")
-	n1 = deleteDuplication1(&ListNode{Data: 1, Next: list})
+	n1 = deleteDuplication1(&Node{Data: 1, Next: list})
 
 	for n := n1; n != nil; n = n.Next {
 		fmt.Println(n.Data)
@@ -34,7 +34,7 @@ func main() {
 		fmt.Println(n.Data)
 	}
 	fmt.Println("===============================")
-	n1 = deleteDuplication2(&ListNode{Data: 1, Next: list})
+	n1 = deleteDuplication2(&Node{Data: 1, Next: list})
 
 	for n := n1; n != nil; n = n.Next {
 		fmt.Println(n.Data)
@@ -48,7 +48,7 @@ func main() {
 		fmt.Println(n.Data)
 	}
 	fmt.Println("===============================")
-	n1 = deleteDuplication3(&ListNode{Data: 1, Next: list})
+	n1 = deleteDuplication3(&Node{Data: 1, Next: list})
 
 	for n := n1; n != nil; n = n.Next {
 		fmt.Println(n.Data)
@@ -56,9 +56,9 @@ func main() {
 }
 
 // O(n)
-func deleteDuplication1(pHead *ListNode) *ListNode {
+func deleteDuplication1(pHead *Node) *Node {
 	// 前一个节点， 新列表节点，新列表尾节点， 尾节点的前一个节点
-	var pre, newList, tail, preTail *ListNode
+	var pre, newList, tail, preTail *Node
 	for n := pHead; n != nil; n = n.Next {
 		if pre == nil {
 			// 第一个元素，初始化新列表
@@ -104,9 +104,9 @@ func deleteDuplication1(pHead *ListNode) *ListNode {
 }
 
 // 改进版，好理解
-func deleteDuplication2(pHead *ListNode) *ListNode {
-	newList := &ListNode{}
-	var pre, tail, preTail *ListNode
+func deleteDuplication2(pHead *Node) *Node {
+	newList := &Node{}
+	var pre, tail, preTail *Node
 	for n := pHead; n != nil; n = n.Next {
 		if pre == nil {
 			// 第一个元素，初始化新列表
@@ -149,7 +149,7 @@ func deleteDuplication2(pHead *ListNode) *ListNode {
 }
 
 // 递归版
-func deleteDuplication3(pHead *ListNode) *ListNode {
+func deleteDuplication3(pHead *Node) *Node {
 	if pHead == nil {
 		return nil
 	}

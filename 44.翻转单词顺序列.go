@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/yacen/sword2offer/util"
+	"github.com/yacen/sword2offer/list"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func ReverseSentence2(str string) (result string) {
 
 // 栈
 func ReverseSentence3(str string) (result string) {
-	s := util.NewStack()
+	s := list.NewStack()
 	i := -1
 	for {
 		i = strings.Index(str, " ")

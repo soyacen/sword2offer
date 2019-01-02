@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	. "github.com/yacen/sword2offer/list"
 	. "github.com/yacen/sword2offer/tree"
-	. "github.com/yacen/sword2offer/util"
 )
 
 /**

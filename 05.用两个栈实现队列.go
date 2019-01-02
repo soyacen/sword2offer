@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/list"
 )
 
 //用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。

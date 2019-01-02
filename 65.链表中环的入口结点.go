@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/list"
 )
 
 /**
@@ -19,11 +19,11 @@ import (
 */
 func main() {
 
-	n4 := &ListNode{Data: 4}
+	n4 := &Node{Data: 4}
 
-	n1 := &ListNode{Data: 1, Next: &ListNode{Data: 2, Next: &ListNode{Data: 3, Next: n4}}}
+	n1 := &Node{Data: 1, Next: &Node{Data: 2, Next: &Node{Data: 3, Next: n4}}}
 
-	n4.Next = &ListNode{Data: 5, Next: &ListNode{Data: 6, Next: &ListNode{Data: 7, Next: &ListNode{Data: 8, Next: &ListNode{Data: 9, Next: &ListNode{Data: 10, Next: &ListNode{Data: 11, Next: n4}}}}}}}
+	n4.Next = &Node{Data: 5, Next: &Node{Data: 6, Next: &Node{Data: 7, Next: &Node{Data: 8, Next: &Node{Data: 9, Next: &Node{Data: 10, Next: &Node{Data: 11, Next: n4}}}}}}}
 
 	fmt.Println(EntryNodeOfLoop1(n1))
 	fmt.Println(EntryNodeOfLoop2(n1))
@@ -32,8 +32,8 @@ func main() {
 }
 
 // 遍历，同时放入map中，出现两次的就是环的入口 O(n)
-func EntryNodeOfLoop1(pHead *ListNode) *ListNode {
-	table := make(map[*ListNode]int)
+func EntryNodeOfLoop1(pHead *Node) *Node {
+	table := make(map[*Node]int)
 	for n := pHead; n != nil; n = n.Next {
 		if _, ok := table[n]; ok {
 			return n
@@ -72,7 +72,7 @@ s f  n
 3 11 -2
 4 4  -3
 */
-func EntryNodeOfLoop2(pHead *ListNode) *ListNode {
+func EntryNodeOfLoop2(pHead *Node) *Node {
 	pSlow, pFast := pHead, pHead
 	n := 0
 	for {
@@ -128,7 +128,7 @@ s f  n
 4 4
 */
 
-func EntryNodeOfLoop3(pHead *ListNode) *ListNode {
+func EntryNodeOfLoop3(pHead *Node) *Node {
 	pSlow, pFast := pHead, pHead
 	n := 0
 	for {
@@ -158,7 +158,7 @@ func EntryNodeOfLoop3(pHead *ListNode) *ListNode {
 /*
 使用断链法，在当前结点访问完毕后，断掉指向当前结点的指针。因此，最后一个被访问的结点一定是入口结点。
 */
-func EntryNodeOfLoop4(pHead *ListNode) *ListNode {
+func EntryNodeOfLoop4(pHead *Node) *Node {
 	n := pHead
 	for n.Next != nil {
 		tmp := n

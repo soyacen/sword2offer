@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/yacen/sword2offer/util"
+	"github.com/yacen/sword2offer/list"
 )
 
 // 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。
@@ -18,7 +18,7 @@ func IsPopOrder(pushV []int, popV []int) bool {
 	if len(pushV) == 0 || len(popV) == 0 || len(pushV) != len(popV) {
 		return false
 	}
-	s := util.Stack{}
+	s := list.Stack{}
 	currentPop := 0
 	for _, v := range pushV {
 		s.Push(v)

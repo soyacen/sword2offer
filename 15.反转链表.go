@@ -1,20 +1,20 @@
 package main
 
 import (
-	. "github.com/yacen/sword2offer/util"
+	. "github.com/yacen/sword2offer/list"
 )
 
 //输入一个链表，反转链表后，输出新链表的表头。
 func main() {
-	head := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, &ListNode{5, nil}}}}}
+	head := &Node{1, &Node{2, &Node{3, &Node{4, &Node{5, nil}}}}}
 	//PrintListFromTailToHead(ReverseList(head))
 	PrintListFromTailToHead(ReverseList2(head))
 }
 
-func ReverseList(pHead *ListNode) *ListNode {
+func ReverseList(pHead *Node) *Node {
 
-	var preNode *ListNode
-	var currentNode *ListNode
+	var preNode *Node
+	var currentNode *Node
 	restList := pHead
 	for {
 		currentNode = restList
@@ -28,7 +28,7 @@ func ReverseList(pHead *ListNode) *ListNode {
 	return currentNode
 }
 
-func ReverseList2(pHead *ListNode) *ListNode {
+func ReverseList2(pHead *Node) *Node {
 	if pHead.Next == nil {
 		return pHead
 	} else {

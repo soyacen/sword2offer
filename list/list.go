@@ -1,13 +1,13 @@
-package util
+package list
 
 import "fmt"
 
-type ListNode struct {
+type Node struct {
 	Data interface{}
-	Next *ListNode
+	Next *Node
 }
 
-func PrintListFromTailToHead(listNode *ListNode) {
+func PrintListFromTailToHead(listNode *Node) {
 	for current := listNode; current != nil; current = current.Next {
 		fmt.Print(current.Data, ", ")
 	}
