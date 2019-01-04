@@ -31,12 +31,6 @@ func main() {
 	}
 
 	fmt.Println(s2.GetMedian())
-
-	minheap := queue.NewPriorityQueue(1, false)
-	for _, v := range dataStream {
-		minheap.Put(Min)
-	}
-
 }
 
 // 插入排序
